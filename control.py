@@ -3,10 +3,10 @@ from time import strftime, localtime
 from router import *
 
 
-account_sid = "AC6518969ac0d71c98384e59b96e7815c4"#HIDDEN
-token = "2f1a0b0cf05c58037745d07e00b2e020"#HIDDEN
+account_sid = ""#HIDDEN
+token = ""#HIDDEN
 client = Client(account_sid,token)
-twilioPhoneNumber = "+12084878796" #insert your twilio phone number here
+twilioPhoneNumber = "" #insert your twilio phone number here
 f = '%Y-%m-%d %H:%M:%S'
 
 """
