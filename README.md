@@ -1,44 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SMslack
+This project used MYSQL database and Twilio sms API to build a web platform mainly for event organizers to send out notifications and announcements via SMS.
 
-## Available Scripts
+# Environment Setup
+Install MYSQL for database management.<br />
+Have Twilio account ready.<br />
+Install ngrok or alternative services to expose localhost.<br />
+<br />
+For ngrok, use the following command in terminal to start:<br />
+`$ ngrok http FLASK_RUNNING_PORT -host-header="localhost:FLASK_RUNNING_PORT"`<br />
+Copy generated http link and paste it into your Twilio SMS webhook.<br />
 
-In the project directory, you can run:
+# Usage
+Enter Twilio api (account_sid and token) information and Twilio phone number in `control.py`<br />
+Fill in database information.<br />
+Start backend at `router.py`<br />
 
-### `npm start`
+All control functions located in `control.py`. Modify if needed.<br />
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Database Tables
+1.Announcement<br />
+2.GroupMsg<br />
+3.Participant<br />
+4.PrivateMsg<br />
+5.Project<br />
+6.Team<br />
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# TODO
+1.Fix possible bugs and check inputs<br />
+2.Front end implementation<br />
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Group Members
+Haoran He<br />
+Kai Hang Chen<br />
