@@ -1,12 +1,12 @@
 from twilio.rest import Client
 from time import strftime, localtime
-from mainApp import *
+from router import *
 
 
-account_sid = ""#HIDDEN
-token = ""#HIDDEN
+account_sid = "AC6518969ac0d71c98384e59b96e7815c4"#HIDDEN
+token = "2f1a0b0cf05c58037745d07e00b2e020"#HIDDEN
 client = Client(account_sid,token)
-twilioPhoneNumber = "" #insert your twilio phone number here
+twilioPhoneNumber = "+12084878796" #insert your twilio phone number here
 f = '%Y-%m-%d %H:%M:%S'
 
 """
@@ -27,7 +27,7 @@ f = '%Y-%m-%d %H:%M:%S'
 
 db = MySQLdb.connect(
     host="localhost",
-    user="", #change it to your username
+    user="GuTou", #change it to your username
     #passwd="" if needed
     db='on9db' #change it to your database
 )
