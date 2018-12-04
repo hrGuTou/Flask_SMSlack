@@ -1,5 +1,5 @@
 # SMslack
-This project used MYSQL database and Twilio sms API to build a platform mainly for event organizers to send out notifications and announcements via SMS.
+This project used MYSQL database and Twilio sms API to build a web platform mainly for event organizers to send out notifications and announcements via SMS.
 
 # Environment Setup
 Install MYSQL for database management.<br />
@@ -13,7 +13,7 @@ Copy generated http link and paste it into your Twilio SMS webhook.<br />
 # Usage
 Enter Twilio api (account_sid and token) information and Twilio phone number in `control.py`<br />
 Fill in database information.<br />
-Start app at `/gui/main.py`<br />
+Start backend at `router.py`<br />
 
 All control functions located in `control.py`. Modify if needed.<br />
 
@@ -27,9 +27,8 @@ All control functions located in `control.py`. Modify if needed.<br />
 
 # TODO
 1.Fix possible bugs and check inputs<br />
-2.Rewrite in Express.js and React<br />
+2.Front end implementation<br />
 
 # Group Members
 Haoran He<br />
-Qizhi Zhao<br />
-YanFeng Lin<br />
+Kai Hang Chen<br />
