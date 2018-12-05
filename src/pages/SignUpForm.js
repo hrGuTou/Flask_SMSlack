@@ -8,7 +8,7 @@ class SignUpForm extends Component {
         this.state = {
             email: '',
             password: '',
-            name: '',
+            confirm: '',
             hasAgreed: false
         };
 
@@ -29,8 +29,27 @@ class SignUpForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
+        const {password,confirm} = this.state;
+        if (password!==confirm) {
+            alert("Passwords not match!")
+        }else{
+
+          (async () => {
+              const rawResponse = await fetch('http://127.0.0.1:5000/api/signup', {
+                method: 'POST',
+                headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                        },
+                body: JSON.stringify(this.state)
+              });
+              const content = await rawResponse.json();
+
+              console.log(content);
+              })();
+
+        }
+
     }
 
     render() {
@@ -39,17 +58,21 @@ class SignUpForm extends Component {
         <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields">
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="name">Full Name</label>
-                <input type="text" id="name" className="FormField__Input" placeholder="Enter your full name" name="name" value={this.state.name} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
+                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
               </div>
+
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="password">Password</label>
                 <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
+
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="confirm">Confirm password</label>
+                <input type="password" id="confirm" className="FormField__Input" placeholder="Confirm your password" name="confirm" value={this.state.confirm} onChange={this.handleChange} />
               </div>
+
+
 
               <div className="FormField">
                 <label className="FormField__CheckboxLabel">

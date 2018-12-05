@@ -1,3 +1,6 @@
+import database
+
+
 def dataParser(data):
     result = []
 
@@ -41,3 +44,17 @@ def dataParser(data):
     result.append(ps.strip())
 
     return result
+
+
+def infoParser(info, num):
+    result = dataParser(info)
+    dataRec = {'Name': result[0],
+               'Email': result[1],
+               'Sex': result[2],
+               'Team Name': result[3],
+               'Project Name': result[4],
+               'Project Status': result[5],
+               'PhoneNumber': num}
+    print(dataRec)  # for debug
+    database.insINFO(dataRec)
+

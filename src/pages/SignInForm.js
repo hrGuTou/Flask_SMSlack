@@ -27,8 +27,26 @@ class SignInForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
+        if (this.state.password === ''){
+            alert("Please enter password")
+        }else{
+            (async () => {
+              const rawResponse = await fetch('http://127.0.0.1:5000/api/login', {
+                method: 'POST',
+                headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json'
+                        },
+                body: JSON.stringify(this.state)
+              });
+              const content = await rawResponse.json();
+
+              console.log(content);
+              })();
+
+        }
+
+
     }
 
     render() {

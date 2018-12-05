@@ -7,6 +7,7 @@ import MySQLdb
 db = MySQLdb.connect(
     host="localhost",
     user="GuTou",
+    passwd="GuTou",
     db='on9db'
 )
 cur = db.cursor()
@@ -14,6 +15,11 @@ cur = db.cursor()
 
 def makeTable():
     try:
+        user = "CREATE TABLE IF NOT EXISTS user(id INT PRIMARY KEY AUTO_INCREMENT," \
+               "Email VARCHAR(320) NOT NULL," \
+               "Event VARCHAR(320)," \
+               "Password VARCHAR(320) NOT NULL)"
+
         participant = "CREATE TABLE IF NOT EXISTS Participant(id INT PRIMARY KEY AUTO_INCREMENT," \
                       "Name VARCHAR(320) NOT NULL," \
                       "Email VARCHAR(320) NOT NULL," \
@@ -21,6 +27,7 @@ def makeTable():
                       "Sex CHAR(1) NOT NULL," \
                       "TeamID INT," \
                       "ProjectID INT," \
+                      "Event VARCHAR(320) NOT NULL," \
                       "UNIQUE (PhoneNumber));"
 
         team = "CREATE TABLE IF NOT EXISTS Team(TeamID INT PRIMARY KEY AUTO_INCREMENT," \
@@ -56,6 +63,7 @@ def makeTable():
         cur.execute(groupMsg)
         cur.execute(privateMsg)
         cur.execute(announcement)
+        cur.execute(user)
     except(MySQLdb.Error, MySQLdb.Warning) as e:
         print(e)
         return None

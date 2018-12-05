@@ -5,7 +5,7 @@ from router import *
 
 account_sid = ""#HIDDEN
 token = ""#HIDDEN
-client = Client(account_sid,token)
+#client = Client(account_sid,token)
 twilioPhoneNumber = "" #insert your twilio phone number here
 f = '%Y-%m-%d %H:%M:%S'
 
@@ -28,7 +28,7 @@ f = '%Y-%m-%d %H:%M:%S'
 db = MySQLdb.connect(
     host="localhost",
     user="GuTou", #change it to your username
-    #passwd="" if needed
+    passwd="GuTou", #if needed
     db='on9db' #change it to your database
 )
 cur = db.cursor()
@@ -40,6 +40,41 @@ def start():
     """
     startApp()
     makeTable()
+
+def greeting(res, eventName):
+    res.message("Welcome to " + eventName + "! Please copy&paste the following message to fill in and reply. "
+                                            "(KEEP EXACT FORMAT)")
+    res.message("[INFO]\n"
+                "Name(first last):\n"
+                "Email:\n"
+                "Sex(M/F):\n"
+                "Team Name:\n"
+                "Project Name:\n"
+                "Project status(C for complete,I for incomplete):")
+    return str(res)
+
+
+
+def signin(email):
+    try:
+        sql = "SELECT Password FROM User WHERE Email = '"+email+"';"
+        cur.execute(sql)
+        password = cur.fetchone()
+
+        return password[0]
+    except Exception as e:
+        print(e)
+
+def signup(email, password):
+    try:
+        sql = "INSERT INTO user(Email, Password) VALUES (%s,%s);"
+        val = (email,password)
+        cur.execute(sql,val)
+
+        db.commit()
+
+    except Exception as e:
+        print(e)
 
 def listAllParticipant():
     """
@@ -318,3 +353,5 @@ def explode():
 
     print("DB reset")
 
+if __name__ == "__main__":
+    print(signin('hrgutou@gmail.com'))
